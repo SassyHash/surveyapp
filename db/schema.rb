@@ -11,22 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125174337) do
+ActiveRecord::Schema.define(:version => 20130125182547) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "response_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "questions", :force => true do |t|
-    t.integer  "poll_id"
+    t.integer  "survey_id"
     t.text     "question_text"
-    t.string   "choice_1"
-    t.string   "choice_2"
-    t.string   "choice_3"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   create_table "responses", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "question_id"
-    t.integer  "data"
+    t.string   "choice"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -40,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20130125174337) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "screen_name"
+    t.string   "email_address"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end

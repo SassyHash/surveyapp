@@ -1,7 +1,9 @@
 class Response < ActiveRecord::Base
-  attr_accessible :question_id, :user_id, :data
+  attr_accessible :choice, :question_id
 
-  has_one :respondent, :through => :users, :source => :user_id
-  has_one :answer
-  
+  belongs_to :question
+  has_many :answers
+
+  validates :question_id, :choice, :presence => true
+
 end
